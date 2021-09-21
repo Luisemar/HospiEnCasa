@@ -19,11 +19,10 @@ namespace HospiEnCasa.App.Persistencia
             return PacienteAdicionado.Entity;
 
         }
-///        Medico IRepositorioPaciente.AsignarMedico(int idPaciente, int idMedico)
-///        {
-///            throw new System.NotImplementedException();
-///        }
-
+        IEnumerable<Paciente> IRepositorioPaciente.GetAllPacientes()
+        {
+            return _appContext.Pacientes;
+        }
         void IRepositorioPaciente.DeletePaciente(int idPaciente)
         {
             var pacienteEncontrado= _appContext.Pacientes.FirstOrDefault(p => p.Id==idPaciente);
@@ -32,21 +31,14 @@ namespace HospiEnCasa.App.Persistencia
             _appContext.Pacientes.Remove(pacienteEncontrado);
             _appContext.SaveChanges();    
         }
-
-        IEnumerable<Paciente> IRepositorioPaciente.GetAllPacientes()
-        {
-            return _appContext.Pacientes;
-        }
-
         Paciente IRepositorioPaciente.GetPaciente(int idPaciente)
         {
             return _appContext.Pacientes.FirstOrDefault(p => p.Id==idPaciente);
         }
-
         Paciente IRepositorioPaciente.UpdatePaciente(Paciente paciente)
         {
             var pacienteEncontrado= _appContext.Pacientes.FirstOrDefault(p => p.Id==paciente.Id);
-            if (pacienteEncontrado!=null)
+            if (pacienteEncontrado !=null)
             {
                 pacienteEncontrado.Nombre=paciente.Nombre;
                 pacienteEncontrado.Apellidos=paciente.Apellidos;
@@ -57,13 +49,28 @@ namespace HospiEnCasa.App.Persistencia
                 pacienteEncontrado.Longitud=paciente.Longitud;
                 pacienteEncontrado.Ciudad=paciente.Ciudad;
                 pacienteEncontrado.FechaNacimiento=paciente.FechaNacimiento;
-                pacienteEncontrado.Familiar=paciente.Familiar;
-                pacienteEncontrado.Enfermera=paciente.Enfermera;
-                pacienteEncontrado.Medico=paciente.Medico;
-                pacienteEncontrado.Historia=paciente.Historia;
+                //pacienteEncontrado.Familiar=paciente.Familiar;
+                //pacienteEncontrado.Enfermera=paciente.Enfermera;
+                //pacienteEncontrado.Medico=paciente.Medico;
+                //pacienteEncontrado.Historia=paciente.Historia;
                 _appContext.SaveChanges();
             }
             return pacienteEncontrado;
         }
+        Medico IRepositorioPaciente.AsignarMedico(int idPaciente, int idMedico)
+        {
+            var pacienteEncontrado = _appContext.Pacientes.Find(idPaciente);
+            if (pacienteEncontrado != null)
+            {
+                var medicoEncontrado = _appContext.Medicos.Find(idMedico);
+                if (medicoEncontrado != null)
+                {
+                    pacienteEncontrado.Medico = medicoEncontrado;
+                    _appContext.SaveChanges();
+                }
+                return medicoEncontrado;
+            }
+            return null;
+        }        
     }
 }
