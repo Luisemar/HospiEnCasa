@@ -28,5 +28,10 @@ namespace HospiEnCasa.App.Consola
             };
             _repoPaciente.AddPaciente(paciente);
         }
+        private static void IndexPacientes()
+        foreach (var paciente in _repoPaciente.GetAllPacientes())
+        {
+            Consola.WriteLine(paciente.Nombre)
+        }
     }
 }
