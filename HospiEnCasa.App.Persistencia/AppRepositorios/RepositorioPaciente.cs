@@ -6,13 +6,8 @@ namespace HospiEnCasa.App.Persistencia
 {
     public class RepositorioPaciente : IRepositorioPaciente
     {
-        private readonly AppContext _appContext;
-
-        public RepositorioPaciente(AppContext appContext)
-        {
-            _appContext=appContext;
-        }
-        Paciente IRepositorioPaciente.AddPaciente(Paciente paciente)
+        private readonly AppContext _appContext = new AppContext();
+        Paciente IRepositorioPaciente.AddPaciente(Paciente paciente)        
         {
             var PacienteAdicionado= _appContext.Pacientes.Add(paciente);
             _appContext.SaveChanges();
@@ -23,7 +18,7 @@ namespace HospiEnCasa.App.Persistencia
         {
             return _appContext.Pacientes;
         }
-        void IRepositorioPaciente.DeletePaciente(int idPaciente)
+        public void DeletePaciente(int idPaciente)
         {
             var pacienteEncontrado= _appContext.Pacientes.FirstOrDefault(p => p.Id==idPaciente);
             if (pacienteEncontrado == null)
@@ -31,11 +26,12 @@ namespace HospiEnCasa.App.Persistencia
             _appContext.Pacientes.Remove(pacienteEncontrado);
             _appContext.SaveChanges();    
         }
-        Paciente IRepositorioPaciente.GetPaciente(int idPaciente)
+
+        public Paciente GetPaciente(int idPaciente)
         {
-            return _appContext.Pacientes.FirstOrDefault(p => p.Id==idPaciente);
+            return _appContext.Pacientes.Find(idPaciente);
         }
-        Paciente IRepositorioPaciente.UpdatePaciente(Paciente paciente)
+        public Paciente UpdatePaciente(Paciente paciente)
         {
             var pacienteEncontrado= _appContext.Pacientes.FirstOrDefault(p => p.Id==paciente.Id);
             if (pacienteEncontrado !=null)

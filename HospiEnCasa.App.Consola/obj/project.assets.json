@@ -5801,11 +5801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Consola\\HospiEnCasa.App.Consola.csproj",
+      "projectUniqueName": "C:\\Hospitalizacion\\HospiEnCasa.App\\Hospiencasa.app.consola\\HospiEnCasa.App.Consola.csproj",
       "projectName": "HospiEnCasa.App.Consola",
-      "projectPath": "C:\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Consola\\HospiEnCasa.App.Consola.csproj",
+      "projectPath": "C:\\Hospitalizacion\\HospiEnCasa.App\\Hospiencasa.app.consola\\HospiEnCasa.App.Consola.csproj",
       "packagesPath": "C:\\Users\\Papa\\.nuget\\packages\\",
-      "outputPath": "C:\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Consola\\obj\\",
+      "outputPath": "C:\\Hospitalizacion\\HospiEnCasa.App\\Hospiencasa.app.consola\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Papa\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -5861,7 +5861,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
