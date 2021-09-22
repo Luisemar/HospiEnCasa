@@ -17,9 +17,9 @@ namespace HospiEnCasa.App.Consola
             //GetAllPacientes(); es la anterior
             //GetPaciente();            
             //DeletePaciente();
-            UpdatePaciente();
+            //UpdatePaciente();
             //AddMedico();
-            //AsignarMedico();            
+            AsignarMedico();            
         }
         private static void AddPaciente()
         {
@@ -82,7 +82,7 @@ namespace HospiEnCasa.App.Consola
 
         private static void AsignarMedico()
         {
-            var medico = _repoPaciente.AsignarMedico(1, 3);
+            var medico = _repoPaciente.AsignarMedico(3, 5);
             Console.WriteLine(medico.Nombre + " " + medico.Apellidos);
         }
 
